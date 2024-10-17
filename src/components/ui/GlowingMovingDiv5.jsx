@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
-const GlowingMovingDiv2 = () => {
+const GlowingMovingDiv5 = () => {
   return (
     <motion.div
-      className="glowing-div-2"
+      className="glowing-div-5"
       Framer Motion animation settings
       animate={{
         x: [0, -500, 0, 0],  // Move horizontally
@@ -20,4 +20,4 @@ const GlowingMovingDiv2 = () => {
   );
 };
 
-export default GlowingMovingDiv2;
+export default GlowingMovingDiv5;

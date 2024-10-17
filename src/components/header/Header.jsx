@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
 import "./header.css"
 
 const Header = () => {
@@ -10,40 +10,42 @@ const Header = () => {
                 </button>
                 <ul className='header-menu'>
                     <li>
-                        <a className='header-menu-option' href="/">{`العروض`}</a>
+                        <Link className='header-menu-option' to="/">{`العروض`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <a className='header-menu-option' href="/">{`لابتبوت`}</a>
+                        <Link className='header-menu-option' to="/laptops">{`لابتبوت`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <a className='header-menu-option' href="/">{`موبيلات`}</a>
+                        <Link className='header-menu-option' to="/mobiles">{`موبيلات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li >
-                        <a className='header-menu-option' href="/">{`اكسسورات`}</a>
+                        <Link className='header-menu-option' to="/accessories">{`اكسسورات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <a className='header-menu-option' href="/">{`الشات`}</a>
+                        <Link className='header-menu-option' to="/chat">{`الشات`}</Link>
                     </li>
                 </ul>
                 <div className='header-logo'>
-                    <span className='header-logo-text'>{`تِكّي`}</span>
-                    <img className='header-logo-img' src="/imgs/logo.svg" alt="logo" />
+                    <Link className='header-logo' to={"/"}>
+                        <span className='header-logo-text'>{`تِكّي`}</span>
+                        <img className='header-logo-img' src="/imgs/logo.svg" alt="logo" />
+                    </Link>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Header
+export default Header;

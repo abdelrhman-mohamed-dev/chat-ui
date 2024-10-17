@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 
-const GlowingMovingDiv2 = () => {
+const GlowingMovingDiv4 = () => {
   return (
     <motion.div
-      className="glowing-div-3"
+      className="glowing-div-4"
       Framer Motion animation settings
       animate={{
-        x: [0, 500, 0, 0],  // Move horizontally
-        y: [0, 0, 0, 0],    // Move vertically
+        x: [0, -500, 0, 0],  // Move horizontally
+        y: [0, 50, 0, 0],    // Move vertically
       }}
       transition={{
         duration: 5,           // Duration of animation cycle
@@ -20,4 +20,4 @@ const GlowingMovingDiv2 = () => {
   );
 };
 
-export default GlowingMovingDiv2;
+export default GlowingMovingDiv4;

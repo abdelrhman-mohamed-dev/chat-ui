@@ -1,0 +1,79 @@
+.glowing-div {
+  position: absolute;
+
+  bottom: -200px;
+  right: -200px;
+  width: 571px;
+  height: 571px;
+  border-radius: 571px;
+  background: linear-gradient(
+    146deg,
+    rgba(255, 0, 168, 0) 0%,
+    #2723fe 100%,
+    #23a7fe 100%
+  );
+  filter: blur(74.5px);
+}
+
+.glowing-div-2 {
+  position: absolute;
+
+  bottom: -100px;
+  right: 0;
+  border-radius: 417px;
+  opacity: 0.6;
+  background: #7500af;
+  filter: blur(100px);
+  width: 417px;
+  height: 417px;
+  flex-shrink: 0;
+}
+
+.glowing-div-3 {
+  position: absolute;
+
+  bottom: -323px;
+  left: -326px;
+  width: 744px;
+  height: 744px;
+  transform: rotate(65.684deg);
+  flex-shrink: 0;
+  border-radius: 744px;
+  opacity: 0.3;
+  background: linear-gradient(
+    143deg,
+    #ffd600 8.37%,
+    rgba(255, 0, 77, 0.2) 91.49%
+  );
+  filter: blur(100px);
+}
+
+.glowing-div-4 {
+  position: absolute;
+  top: -60%;
+  right: 10%;
+  width: 438px;
+  height: 593px;
+  transform: rotate(62.964deg);
+  flex-shrink: 0;
+  opacity: 0.8;
+  background: linear-gradient(
+    180deg,
+    rgba(71, 151, 238, 0.28) 0%,
+    #ff29c3 100%
+  );
+  filter: blur(100px);
+}
+
+.glowing-div-5 {
+  position: absolute;
+  top: -60%;
+  left: 60%;
+  width: 300px;
+  height: 593px;
+  transform: rotate(92.964deg);
+  flex-shrink: 0;
+  opacity: 0.8;
+  background: linear-gradient(180deg, rgba(0, 255, 209, 0) 7.81%, #0077ff 100%);
+  filter: blur(100px);
+}

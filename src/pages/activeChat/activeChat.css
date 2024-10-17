@@ -1,0 +1,71 @@
+.active-chat-container {
+  /* z-index: 999999999; */
+  padding: 0 0 40px 0;
+  position: relative;
+  height: 96%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20.6px;
+}
+
+.bot {
+  z-index: 999999999;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20.6px;
+}
+
+.user {
+  z-index: 999999999;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 20.6px;
+}
+
+.chat-blob {
+  z-index: 999999999;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: #d9d9d9;
+}
+
+.chat-text {
+  z-index: 999999999;
+  max-width: 80%;
+  display: inline-flex;
+  padding: 16px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-text p {
+  z-index: 999999999;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.scrollArea {
+  z-index: 999999999;
+  width: 65%;
+  height: 70%;
+  overflow-y: scroll;
+  padding: 0 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 30.6px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
