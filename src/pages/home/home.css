@@ -1,5 +1,6 @@
 .home {
   /* width: 100%; */
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +10,7 @@
 
 .home-title {
   font-family: "Somar Rounded";
-  font-size: 58.497px;
+  font-size: 80px;
   font-style: normal;
   font-weight: 700;
   line-height: 68.247px;
@@ -19,7 +20,7 @@
 .home-subTitle {
   text-align: right;
   font-family: "Somar Rounded";
-  font-size: 58.497px;
+  font-size: 80px;
   font-style: normal;
   font-weight: 700;
   line-height: 68.247px; /* 116.667% */

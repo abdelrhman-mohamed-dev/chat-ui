@@ -1,18 +1,46 @@
 import "./glowingDiv.css"
-import GlowingMovingDiv from "../ui/GlowingMovingDiv"
-import GlowingMovingDiv2 from "../ui/GlowingMovingDiv2"
-import GlowingMovingDiv3 from "../ui/GlowingMovingDiv3"
-import GlowingMovingDiv4 from "../ui/GlowingMovingDiv4"
-import GlowingMovingDiv5 from "../ui/GlowingMovingDiv5"
+import GlowingMovingDiv from "../ui/GlowingMoving";
+
+const glowingDivsData = [
+    {
+        className: "glowing-div-1",
+        translateX: ["0%", "-90%", "0%", "0%"],
+        translateY: ["0%", "-50%", "0%", "0%"],
+    },
+    {
+        className: "glowing-div-2",
+        translateX: ["0%", "-90%", "0%", "0%"],
+        translateY: ["0%", "-50%", "0%", "0%"],
+    },
+    {
+        className: "glowing-div-3",
+        translateX: ["0%", "100%", "0%", "0%"],
+        translateY: ["0%", "-40%", "0%", "0%"],
+    },
+    {
+        className: "glowing-div-4",
+        translateX: [0, -500, 0, 0],
+        translateY: [0, 50, 0, 0],
+    },
+    {
+        className: "glowing-div-5",
+        translateX: [0, -500, 0, 0],
+        translateY: [0, 50, 0, 0],
+    },
+];
+
 
 const GlowingDiv = () => {
     return (
         <>
-            <GlowingMovingDiv />
-            <GlowingMovingDiv2 />
-            <GlowingMovingDiv3 />
-            <GlowingMovingDiv4 />
-            <GlowingMovingDiv5 />
+            {glowingDivsData.map((div, index) => (
+                <GlowingMovingDiv
+                    key={index}
+                    className={div.className}
+                    translateX={div.translateX}
+                    translateY={div.translateY}
+                />
+            ))}
         </>
     )
 }
