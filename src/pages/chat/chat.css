@@ -1,8 +1,9 @@
 .chat-border {
   pointer-events: none !important;
   position: absolute;
-  width: 1315px;
+  width: 100%;
   z-index: 999999999;
+  /* display: none; */
 }
 .chat-input-container {
   position: relative;
@@ -30,7 +31,7 @@
   width: 100%;
   height: 100%;
   border: none;
-  background: transparent;
+  background: #1c1f28;
   color: #fff;
   font-family: Raleway;
   font-size: 18px;
