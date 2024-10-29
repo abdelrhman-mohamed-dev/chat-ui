@@ -1,23 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-// import Chat from "../chat/Chat"
-import "./activeChat.css"
+import { useParams } from "react-router-dom";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-// import { v4 as uuidv4 } from 'uuid';
+import "./activeChat.css";
 
 const ActiveChat = () => {
+    const { sessionId } = useParams(); // Get sessionId from URL params
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
-    const [sessionId, setSessionId] = useState('');
     const [error, setError] = useState('');
     const scrollAreaRef = useRef(null);
 
-    useEffect(() => {
-        const newSessionId = uuidv4();
-        setSessionId(newSessionId);
-    }, []);
+    // Remove the sessionId generation useEffect since we're getting it from URL
 
     useEffect(() => {
         if (scrollAreaRef.current) {
@@ -35,26 +29,28 @@ const ActiveChat = () => {
             sender: 'user'
         };
 
+        // Append the new message instead of replacing
         setMessages(prevMessages => [...prevMessages, userMessage]);
         setInputText('');
         setIsTyping(true);
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:3000/api/rag', {
+            const response = await axios.post('https://ai-laptops.netlify.app/api/rag', {
                 userPrompt: inputText.trim(),
                 sessionId
             }, {
-                timeout: 10 * 60 * 1000 // 10 minutes in milliseconds
+                timeout: 10 * 60 * 1000
             });
 
-            console.log(response);
+            // Add only the new message from the response
+            const newMessage = {
+                id: Date.now() + 1,
+                text: response.data.history[response.data.history.length - 1].content,
+                sender: 'agent'
+            };
 
-            setMessages(response.data.history.map((entry, index) => ({
-                id: index,
-                text: entry.content,
-                sender: entry.role === 'human' ? 'user' : 'agent'
-            })));
+            setMessages(prevMessages => [...prevMessages, newMessage]);
 
         } catch (error) {
             console.error('Error:', error);
@@ -62,27 +58,32 @@ const ActiveChat = () => {
         } finally {
             setIsTyping(false);
         }
-
     };
 
-
-
-
     return (
-
         <div className="active-chat-container">
-            <div className="scrollArea">
+            <div className="scrollArea" ref={scrollAreaRef}>
                 {messages.map((message) => (
-                    <div key={message.id} className={` ${message.sender === 'user' ? 'user' : 'bot'}`}>
-
+                    <div key={message.id} className={`${message.sender === 'user' ? 'bot' : 'user'}`}>
                         <div className="chat-text">
-
                             <p>{message.text}</p>
                         </div>
-                        <div className="chat-blob" />
+                        {error && <div className="error">{error}</div>}
+                        {message.sender === 'user' ? (
+                            <div className="chat-blob" />
+                        ) : (
+                            <img src="/imgs/logo.svg" alt="" />
+                        )}
                     </div>
                 ))}
-
+                {isTyping && (
+                    <div className="user">
+                        <div className="chat-text">
+                            <p>loading....</p>
+                        </div>
+                        <img src="/imgs/logo.svg" alt="" />
+                    </div>
+                )}
             </div>
             <form className="gradient-border-inner" onSubmit={handleSubmit}>
                 <div className="chat-input-container">
@@ -97,14 +98,9 @@ const ActiveChat = () => {
                     />
                     <img src="/imgs/Search.svg" alt="" />
                 </div>
-                {/* {showWarning && (
-                    <div className="warning">
-                        <p>من فضلك اكتب شي للبحث عنه !</p>
-                    </div>
-                )} */}
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default ActiveChat
+export default ActiveChat;
