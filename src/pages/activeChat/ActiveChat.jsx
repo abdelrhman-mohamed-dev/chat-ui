@@ -45,10 +45,10 @@ const ActiveChat = () => {
                 userPrompt: inputText.trim(),
                 sessionId
             }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                timeout: 10 * 60 * 1000 // 10 minutes in milliseconds
             });
+
+            console.log(response);
 
             setMessages(response.data.history.map((entry, index) => ({
                 id: index,
@@ -62,6 +62,7 @@ const ActiveChat = () => {
         } finally {
             setIsTyping(false);
         }
+
     };
 
 
