@@ -13,17 +13,17 @@ const Chat = () => {
 
         if (!inputText.trim()) {
             setShowWarning(true);
-            // Hide warning after 3 seconds
             setTimeout(() => setShowWarning(false), 3000);
             return;
         }
 
-
         // Generate a new UUID for the chat
         const chatId = uuidv4();
 
-        // Navigate to the new chat route with the generated ID
-        navigate(`/chat/${chatId}`);
+        // Navigate to the new chat route with the generated ID and state
+        navigate(`/chat/${chatId}`, {
+            state: { initialMessage: inputText.trim() }
+        });
     };
 
     return (

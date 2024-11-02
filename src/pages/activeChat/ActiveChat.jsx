@@ -1,17 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./activeChat.css";
 
 const ActiveChat = () => {
-    const { sessionId } = useParams(); // Get sessionId from URL params
+    const { sessionId } = useParams();
+    const location = useLocation();
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [error, setError] = useState('');
     const scrollAreaRef = useRef(null);
+    const initialMessageSent = useRef(false);
 
-    // Remove the sessionId generation useEffect since we're getting it from URL
+    useEffect(() => {
+        // Handle initial message if it exists and hasn't been sent yet
+        const initialMessage = location.state?.initialMessage;
+        if (initialMessage && !initialMessageSent.current) {
+            initialMessageSent.current = true;
+            handleMessage(initialMessage);
+        }
+    }, [location.state]);
 
     useEffect(() => {
         if (scrollAreaRef.current) {
@@ -19,31 +28,25 @@ const ActiveChat = () => {
         }
     }, [messages]);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!inputText.trim()) return;
-
+    const handleMessage = async (text) => {
         const userMessage = {
             id: Date.now(),
-            text: inputText.trim(),
+            text: text,
             sender: 'user'
         };
 
-        // Append the new message instead of replacing
         setMessages(prevMessages => [...prevMessages, userMessage]);
-        setInputText('');
         setIsTyping(true);
         setError('');
 
         try {
             const response = await axios.post('https://ai-laptops.netlify.app/api/rag', {
-                userPrompt: inputText.trim(),
+                userPrompt: text,
                 sessionId
             }, {
                 timeout: 10 * 60 * 1000
             });
 
-            // Add only the new message from the response
             const newMessage = {
                 id: Date.now() + 1,
                 text: response.data.history[response.data.history.length - 1].content,
@@ -58,6 +61,14 @@ const ActiveChat = () => {
         } finally {
             setIsTyping(false);
         }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!inputText.trim()) return;
+
+        await handleMessage(inputText.trim());
+        setInputText('');
     };
 
     return (
