@@ -1,4 +1,5 @@
 .glowing-div-1 {
+  pointer-events: none;
   position: absolute;
 
   bottom: -200px;
@@ -16,6 +17,7 @@
 }
 
 .glowing-div-2 {
+  pointer-events: none;
   position: absolute;
 
   bottom: -100px;
@@ -30,6 +32,7 @@
 }
 
 .glowing-div-3 {
+  pointer-events: none;
   position: absolute;
 
   bottom: -323px;
@@ -49,6 +52,7 @@
 }
 
 .glowing-div-4 {
+  pointer-events: none;
   position: absolute;
   top: -60%;
   right: 10%;
@@ -66,6 +70,7 @@
 }
 
 .glowing-div-5 {
+  pointer-events: none;
   position: absolute;
   top: -60%;
   left: 60%;

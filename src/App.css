@@ -22,3 +22,9 @@
   align-items: center;
   gap: 20.6px;
 }
+
+@media (max-width: 575px) {
+  .screen {
+    /* padding-bottom: 50px; */
+  }
+}

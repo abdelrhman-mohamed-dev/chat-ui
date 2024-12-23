@@ -101,6 +101,9 @@
 }
 
 @media (max-width: 575px) {
+  .home {
+    padding-bottom: 60px;
+  }
   .home-title {
     font-size: 26px;
     margin-top: 51px;

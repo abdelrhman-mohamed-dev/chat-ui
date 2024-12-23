@@ -25,6 +25,26 @@
   cursor: pointer;
 }
 
+@media (max-width: 575px) {
+  .chat-input-container {
+    width: 300px;
+    padding: 13.115px 25.398px;
+  }
+  .chat-border {
+    display: none;
+  }
+
+  .search-icon-chat {
+    width: 25px;
+  }
+  .send-icon-chat {
+    width: 40px;
+  }
+  .chat-input::placeholder {
+    font-size: 12px;
+  }
+}
+
 .chat-input {
   z-index: 999999999;
   font-family: "Somar Rounded";
