@@ -35,10 +35,11 @@
 }
 
 .chat-text {
+  font-family: "IBM Plex Sans Arabic", serif;
   z-index: 999999999;
   max-width: 80%;
   display: inline-flex;
-  padding: 16px 12px;
+  padding: 16px 25px;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -51,10 +52,8 @@
 .chat-text p {
   z-index: 999999999;
   color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 20px;
+  margin-bottom: 9px;
 }
 
 .scrollArea {
@@ -77,4 +76,89 @@
     width: 95%;
     padding: 0 20px;
   }
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px dotted #fff;
+  border-style: solid solid dotted dotted;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px dotted #7500af;
+  border-style: solid solid dotted;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: rotationBack 1s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.loding-container {
+  z-index: 999999999;
+}
+
+.loading-bar {
+  height: 1.05rem;
+  border-radius: 0.125rem;
+}
+
+.gradient-1 {
+  background-image: linear-gradient(
+    to right,
+    #eff6ff 30%,
+    #7500af 60%,
+    #eff6ff
+  );
+  width: 80%;
+}
+
+.gradient-2 {
+  background-image: linear-gradient(
+    to right,
+    #eff6ff 30%,
+    #7500af 60%,
+    #eff6ff
+  );
+  width: 100%;
+}
+
+.gradient-3 {
+  background-image: linear-gradient(
+    to right,
+    #eff6ff 30%,
+    #7500af 60%,
+    #eff6ff
+  );
+  width: 60%;
 }

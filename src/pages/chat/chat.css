@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap");
+
 .chat-border {
   pointer-events: none !important;
   position: absolute;
@@ -85,4 +87,16 @@
   line-height: 23.44px;
   letter-spacing: 0.02em;
   z-index: 9999999999;
+}
+
+.markdown {
+  /* font-family: "Somar Rounded"; */
+  font-family: "IBM Plex Sans Arabic", serif;
+  color: #fff;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
 }

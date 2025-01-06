@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import ReactMarkdown from "react-markdown"; // Import react-markdown
 import "./activeChat.css";
 
 const ActiveChat = () => {
@@ -39,17 +41,20 @@ const ActiveChat = () => {
         setIsTyping(true);
         setError('');
 
+        // https://google-sheets.netlify.app/api/rag
         try {
-            const response = await axios.post('https://ai-laptops.netlify.app/api/rag', {
+            const response = await axios.post('https://google-sheets.netlify.app/api/rag', {
                 userPrompt: text,
                 sessionId
             }, {
                 timeout: 10 * 60 * 1000
             });
 
+            const aiResponse = response.data.history[response.data.history.length - 1].content;
+
             const newMessage = {
                 id: Date.now() + 1,
-                text: response.data.history[response.data.history.length - 1].content,
+                text: aiResponse, // Markdown content from AI
                 sender: 'agent'
             };
 
@@ -77,7 +82,11 @@ const ActiveChat = () => {
                 {messages.map((message) => (
                     <div key={message.id} className={`${message.sender === 'user' ? 'bot' : 'user'}`}>
                         <div className="chat-text">
-                            <p>{message.text}</p>
+                            {message.sender === 'agent' ? (
+                                <ReactMarkdown className={`markdown`}>{message.text}</ReactMarkdown> // Render Markdown
+                            ) : (
+                                <p>{message.text}</p>
+                            )}
                         </div>
                         {error && <div className="error">{error}</div>}
                         {message.sender === 'user' ? (
@@ -90,7 +99,12 @@ const ActiveChat = () => {
                 {isTyping && (
                     <div className="user">
                         <div className="chat-text">
-                            <p>loading....</p>
+                            <span className="loader"></span>
+                            {/* <div className="loding-container">
+                                <div className="loading-bar gradient-1"></div>
+                                <div className="loading-bar gradient-2"></div>
+                                <div className="loading-bar gradient-3"></div>
+                            </div> */}
                         </div>
                         <img src="/imgs/logo.svg" alt="" />
                     </div>

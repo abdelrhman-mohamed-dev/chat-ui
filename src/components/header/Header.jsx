@@ -8,27 +8,28 @@ const Header = () => {
                 <button className='header-button'>
                     <span className='header-button-text'> {`ENGLISH`}</span>
                 </button>
+                {/* <div></div> */}
                 <ul className='header-menu'>
                     <li>
-                        <Link className='header-menu-option' to="/">{`العروض`}</Link>
+                        <Link className='header-menu-option' to="/chat">{`العروض`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <Link className='header-menu-option' to="/laptops">{`لابتبوت`}</Link>
+                        <Link className='header-menu-option' to="/chat">{`لابتبوت`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <Link className='header-menu-option' to="/mobiles">{`موبيلات`}</Link>
+                        <Link className='header-menu-option' to="/chat">{`موبيلات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li >
-                        <Link className='header-menu-option' to="/accessories">{`اكسسورات`}</Link>
+                        <Link className='header-menu-option' to="/chat">{`اكسسورات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
