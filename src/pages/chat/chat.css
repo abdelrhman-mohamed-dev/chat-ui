@@ -27,6 +27,25 @@
   cursor: pointer;
 }
 
+/* w:869px */
+/* Medium screens (e.g., iPad Pro at 869px width) */
+
+@media (min-width: 576px) and (max-width: 1024px) {
+  .chat-input-container {
+    width: 869px; /* Adjusted width for medium screens */
+    padding: 13.115px 35.398px; /* Slightly reduced padding for better fit */
+  }
+  .search-icon-chat {
+    width: 30px; /* Adjusted icon size for medium screens */
+  }
+  .send-icon-chat {
+    width: 45px; /* Adjusted icon size for medium screens */
+  }
+  .chat-input::placeholder {
+    font-size: 14px; /* Slightly increased placeholder font size */
+  }
+}
+
 @media (max-width: 575px) {
   .chat-input-container {
     width: 300px;
