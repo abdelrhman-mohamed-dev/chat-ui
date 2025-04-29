@@ -13,7 +13,7 @@ const Home = () => {
                 {`الاسعار و اعرفك اي اكتر جهاز مناسب ليك`}
             </p>
             <div className='home-buttons-groub relative'>
-                <a className='home-button relative' href="/chat">
+                <a className='home-button relative' href="/chat/accessories">
                     <span className='home-button-text'>{`اكسسوارات`}</span>
                     <img src="/imgs/keyboard.png" alt="" />
                 </a>
@@ -21,7 +21,7 @@ const Home = () => {
                     <span className='home-button-text'>{`لابـــتـــوب`}</span>
                     <img src="/imgs/laptop.png" alt="" />
                 </a>
-                <a className='home-button relative' href="/chat">
+                <a className='home-button relative' href="/chat/mobile">
                     <span className='home-button-text'>{`موبـــيـــلات`}</span>
                     <img src="/imgs/mobile.png" alt="" />
                 </a>

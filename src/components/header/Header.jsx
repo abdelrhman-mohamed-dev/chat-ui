@@ -23,13 +23,13 @@ const Header = () => {
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li>
-                        <Link className='header-menu-option' to="/chat">{`موبيلات`}</Link>
+                        <Link className='header-menu-option' to="/chat/mobile">{`موبيلات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />
                     </li>
                     <li >
-                        <Link className='header-menu-option' to="/chat">{`اكسسورات`}</Link>
+                        <Link className='header-menu-option' to="/chat/accessories">{`اكسسورات`}</Link>
                     </li>
                     <li>
                         <img src="/imgs/menu-star.svg" alt="" />

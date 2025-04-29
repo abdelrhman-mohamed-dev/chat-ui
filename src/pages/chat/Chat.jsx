@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import "./chat.css";
 
@@ -7,6 +7,7 @@ const Chat = () => {
     const [inputText, setInputText] = useState('');
     const [showWarning, setShowWarning] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,8 +21,21 @@ const Chat = () => {
         // Generate a new UUID for the chat
         const chatId = uuidv4();
 
-        // Navigate to the new chat route with the generated ID and state
-        navigate(`/chat/${chatId}`, {
+        // Determine the section based on the current path
+        const isMobile = location.pathname.includes('/mobile');
+        const isAccessories = location.pathname.includes('/accessories');
+
+        // Build the appropriate route
+        let route = '/chat';
+        if (isMobile) {
+            route += '/mobile';
+        } else if (isAccessories) {
+            route += '/accessories';
+        }
+        route += `/${chatId}`;
+
+        // Navigate to the appropriate route with the generated ID and state
+        navigate(route, {
             state: { initialMessage: inputText.trim() }
         });
     };

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import ReactMarkdown from "react-markdown"; // Import react-markdown
+import ReactMarkdown from "react-markdown";
 import "./activeChat.css";
 
 const ActiveChat = () => {
@@ -41,9 +41,26 @@ const ActiveChat = () => {
         setIsTyping(true);
         setError('');
 
-        // https://google-sheets.netlify.app/api/rag
         try {
-            const response = await axios.post('https://google-sheets.netlify.app/api/rag', {
+            // Determine which endpoint to use based on path and keywords
+            let endpoint = 'https://google-sheets.netlify.app/api/rag';
+            
+            const isAccessories = location.pathname.includes('/accessories') || 
+                                text.toLowerCase().includes('اكسسوارات') || 
+                                text.toLowerCase().includes('accessories');
+            
+            const isMobile = location.pathname.includes('/mobile') || 
+                            text.toLowerCase().includes('موبايل') || 
+                            text.toLowerCase().includes('mobile') ||
+                            text.toLowerCase().includes('phone');
+
+            if (isAccessories) {
+                endpoint = 'https://google-sheets.netlify.app/api/accessories';
+            } else if (isMobile) {
+                endpoint = 'https://google-sheets.netlify.app/api/mobile';
+            }
+
+            const response = await axios.post(endpoint, {
                 userPrompt: text,
                 sessionId
             }, {
@@ -54,7 +71,7 @@ const ActiveChat = () => {
 
             const newMessage = {
                 id: Date.now() + 1,
-                text: aiResponse, // Markdown content from AI
+                text: aiResponse,
                 sender: 'agent'
             };
 

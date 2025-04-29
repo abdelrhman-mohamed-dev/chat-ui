@@ -19,8 +19,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/chat/:id" element={<ActiveChat />} />
-          {/* <Route path="/laptops" element={<Laptops />} />
-          <Route path="/mobiles" element={<Mobiles />} /> */}
+          <Route path="/chat/accessories" element={<Chat />} />
+          <Route path="/chat/accessories/:id" element={<ActiveChat />} />
         </Routes>
       </div>
     </Router>
