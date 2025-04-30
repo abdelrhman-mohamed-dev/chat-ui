@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import useIdleTimeout from '../../hooks/useIdleTimeout';
 import "./chat.css";
 
 const Chat = () => {
@@ -8,6 +9,9 @@ const Chat = () => {
     const [showWarning, setShowWarning] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Initialize idle timeout - will redirect to home after 5 minutes of inactivity
+    useIdleTimeout();
 
     const handleSubmit = (e) => {
         e.preventDefault();

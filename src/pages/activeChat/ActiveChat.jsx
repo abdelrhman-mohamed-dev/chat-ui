@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import useIdleTimeout from "../../hooks/useIdleTimeout";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "./activeChat.css";
@@ -9,6 +10,9 @@ const ActiveChat = () => {
     const { sessionId } = useParams();
     const location = useLocation();
     const [messages, setMessages] = useState([]);
+
+    // Initialize idle timeout - will redirect to home after 5 minutes of inactivity
+    useIdleTimeout();
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [error, setError] = useState('');
@@ -44,15 +48,15 @@ const ActiveChat = () => {
         try {
             // Determine which endpoint to use based on path and keywords
             let endpoint = 'https://google-sheets.netlify.app/api/rag';
-            
-            const isAccessories = location.pathname.includes('/accessories') || 
-                                text.toLowerCase().includes('اكسسوارات') || 
-                                text.toLowerCase().includes('accessories');
-            
-            const isMobile = location.pathname.includes('/mobile') || 
-                            text.toLowerCase().includes('موبايل') || 
-                            text.toLowerCase().includes('mobile') ||
-                            text.toLowerCase().includes('phone');
+
+            const isAccessories = location.pathname.includes('/accessories') ||
+                text.toLowerCase().includes('اكسسوارات') ||
+                text.toLowerCase().includes('accessories');
+
+            const isMobile = location.pathname.includes('/mobile') ||
+                text.toLowerCase().includes('موبايل') ||
+                text.toLowerCase().includes('mobile') ||
+                text.toLowerCase().includes('phone');
 
             if (isAccessories) {
                 endpoint = 'https://google-sheets.netlify.app/api/accessories';
