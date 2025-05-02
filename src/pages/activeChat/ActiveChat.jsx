@@ -16,6 +16,7 @@ const ActiveChat = () => {
     const [inputText, setInputText] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [error, setError] = useState('');
+    const [lastFailedMessage, setLastFailedMessage] = useState(null);
     const scrollAreaRef = useRef(null);
     const initialMessageSent = useRef(false);
 
@@ -84,6 +85,7 @@ const ActiveChat = () => {
         } catch (error) {
             console.error('Error:', error);
             setError('عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.');
+            setLastFailedMessage(text);
         } finally {
             setIsTyping(false);
         }
@@ -109,7 +111,6 @@ const ActiveChat = () => {
                                 <p>{message.text}</p>
                             )}
                         </div>
-                        {error && <div className="error">{error}</div>}
                         {message.sender === 'user' ? (
                             <div className="chat-blob" />
                         ) : (
@@ -117,6 +118,26 @@ const ActiveChat = () => {
                         )}
                     </div>
                 ))}
+                {error && (
+                    <div className="user error-message">
+                        <div className="chat-text error-text">
+                            <p>{error}</p>
+                            {lastFailedMessage && (
+                                <button
+                                    className="regenerate-btn"
+                                    onClick={() => {
+                                        setError('');
+                                        handleMessage(lastFailedMessage);
+                                        setLastFailedMessage(null);
+                                    }}
+                                >
+                                    إعادة المحاولة
+                                </button>
+                            )}
+                        </div>
+                        <img src="/imgs/logo.svg" alt="" />
+                    </div>
+                )}
                 {isTyping && (
                     <div className="user">
                         <div className="chat-text">

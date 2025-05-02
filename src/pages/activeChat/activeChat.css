@@ -56,6 +56,37 @@
   margin-bottom: 9px;
 }
 
+.error-message {
+  margin-top: 16px;
+}
+
+.error-text {
+  background: rgba(255, 68, 68, 0.1) !important;
+  border: 1px solid #ff4444 !important;
+}
+
+.error-text p {
+  color: #ff4444 !important;
+  text-align: center;
+  margin-bottom: 12px !important;
+}
+
+.regenerate-btn {
+  background: rgba(117, 0, 175, 0.2);
+  border: 1px solid #7500af;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "IBM Plex Sans Arabic", serif;
+  width: 100%;
+}
+
+.regenerate-btn:hover {
+  background: rgba(117, 0, 175, 0.3);
+}
+
 .scrollArea {
   z-index: 999999999;
   width: 65%;
